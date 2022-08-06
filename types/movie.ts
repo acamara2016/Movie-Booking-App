@@ -1,0 +1,40 @@
+export type IMovie = {
+  isWatchListed: boolean;
+  id: number;
+  stars: number;
+  likes: number;
+  dislikes: number;
+  presentationType: string;
+  name: string;
+  releaseDate: Date;
+  firstShowStartDate: Date;
+  marketLanguageCode: string;
+  isNowPlaying: boolean;
+  isComingSoon: boolean;
+  isReleasingSoon: boolean;
+  isEvent: boolean;
+  hasShowtimes: boolean;
+  hasPosterImage: boolean;
+  smallPosterImageUrl: string;
+  mediumPosterImageUrl: string;
+  largePosterImageUrl: string;
+  mobileBackgroundImageUrl: string;
+  mpaaRating: MPAARating;
+  formats: string[];
+  brightcoveVideoId: number;
+  urlSlug: string;
+  duration: string;
+  vistaEventCode: string;
+  vistaEventCodeVIP: string;
+  seriesTicketingUrl: string;
+  seriesTicketingVIPUrl: string;
+  runtime: number;
+};
+
+export type MPAARating = {
+  province: string;
+  ratingTitle: string;
+  ratingDescription: string;
+  warning: string;
+  imageUrl: string;
+};
