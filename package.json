@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "build": "npx tsc",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "build-ios": "cd ios && pod install",
