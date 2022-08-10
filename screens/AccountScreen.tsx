@@ -1,7 +1,15 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {View, Button, Text, Image, TouchableOpacity} from 'react-native';
+import {handleLogout} from '../features/movieSlicer';
+import {useAppDispatch} from '../hooks/state';
 
-const AccountScreen = ({navigation}: {navigation: any}) => {
+const AccountScreen = () => {
+  const dispatch = useAppDispatch();
+  const handleLogoutEvent = (e: any) => {
+    e.preventDefault();
+    dispatch(handleLogout());
+  };
   return (
     <View className="flex items-center h-screen justify-center pt-40  gap-6">
       <View className="">
@@ -20,7 +28,9 @@ const AccountScreen = ({navigation}: {navigation: any}) => {
         <TouchableOpacity className="border w-80 border-black py-3 px-6 rounded-lg ">
           <Text className="text-center">Settings</Text>
         </TouchableOpacity>
-        <TouchableOpacity className="border w-80 border-black py-3 px-6 bg-black rounded-lg">
+        <TouchableOpacity
+          onPress={e => handleLogoutEvent(e)}
+          className="border w-80 border-black py-3 px-6 bg-black rounded-lg">
           <Text className="text-white text-center">Logout</Text>
         </TouchableOpacity>
       </View>

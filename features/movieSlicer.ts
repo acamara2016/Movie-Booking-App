@@ -6,6 +6,7 @@ const initialState = {
   mostPopularMovies: [],
   closestTheatres: [],
   user: {},
+  loggedIn: false,
 };
 
 export const fetchLastestMovies = createAsyncThunk(
@@ -54,7 +55,19 @@ export const fetchClosestTheatres = createAsyncThunk(
 const lastestMovieSlice = createSlice({
   name: 'movies',
   initialState,
-  reducers: {},
+  reducers: {
+    handleLogin: (state, action) => {
+      console.log('handling login');
+      state.user = action.payload;
+      state.loggedIn = true;
+      console.log(state.user);
+      console.log(state.loggedIn);
+    },
+    handleLogout: (state, action) => {
+      state.user = {};
+      state.loggedIn = false;
+    },
+  },
   extraReducers: builder => {
     builder.addCase(fetchLastestMovies.fulfilled, (state, action) => {
       state.latestMovies = action.payload.data;
@@ -68,5 +81,5 @@ const lastestMovieSlice = createSlice({
     // add pending and rejected states
   },
 });
-
+export const {handleLogin, handleLogout} = lastestMovieSlice.actions;
 export default lastestMovieSlice.reducer;

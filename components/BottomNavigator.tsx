@@ -43,6 +43,7 @@ const TabNavigator = () => {
         name="Theaters"
         component={TheaterScreen}
         options={{
+          tabBarLabel: 'Theaters',
           tabBarIcon: ({focused}) => (
             <View className="items-center py-6">
               <PlusIcon
@@ -60,9 +61,10 @@ const TabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Trades"
+        name="Account"
         component={AccountScreen}
         options={{
+          tabBarLabel: 'Account',
           tabBarIcon: ({focused}) => (
             <View className="items-center py-6">
               <SwitchHorizontalIcon
