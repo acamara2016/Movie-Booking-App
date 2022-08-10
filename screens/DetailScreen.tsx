@@ -10,10 +10,18 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-const DetailScreen = ({navigation, route}: {navigation: any; route: any}) => {
+import {ArrowLeftIcon} from 'react-native-heroicons/outline';
+import {useNavigation} from '@react-navigation/native';
+const DetailScreen = ({route}: {route: any}) => {
   const data: IMovie = route.params.data;
+  const navigation = useNavigation();
   return (
     <View>
+      <TouchableOpacity
+        className="mx-5 mt-5"
+        onPress={() => navigation.goBack()}>
+        <ArrowLeftIcon size={30} color="black" />
+      </TouchableOpacity>
       <ScrollView>
         <View className="items-center pt-10">
           {data.hasPosterImage && (

@@ -16,11 +16,14 @@ import {
   fetchMostPopular,
 } from './features/movieSlicer';
 import {useAppDispatch, useAppSelector} from './hooks/state';
+import AuthStack from './components/AuthStack';
+import MainNavigator from './components/MainNavigator';
 
 const Drawer = createDrawerNavigator();
 
 export default function AppEntry() {
   const dispatch = useAppDispatch();
+  const {loggedIn} = useAppSelector(state => state.movies);
   React.useEffect(() => {
     dispatch(fetchClosestTheatres(400));
     dispatch(fetchLastestMovies(30));
@@ -36,33 +39,14 @@ export default function AppEntry() {
   ) {
     return (
       <View className="flex justify-center">
-        <Text>Loadin</Text>
+        <Text>Loading ...</Text>
       </View>
     );
   }
-  return (
-    <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen
-          name="Home"
-          options={{
-            headerTitle: '',
-            headerRight: (navigation: any) => (
-              <TouchableOpacity onPress={() => navigation.openDrawer()}>
-                <Image
-                  source={{
-                    uri: 'https://www.kindpng.com/picc/m/45-452763_cat-cartoon-cuteness-transparent-background-cute-cat-clipart.png',
-                  }}
-                  className="rounded-full h-20 w-20"
-                />
-              </TouchableOpacity>
-            ),
-          }}
-          component={HomeScreen}
-        />
-        <Drawer.Screen name="Theater" component={TheaterScreen} />
-        <Drawer.Screen name="Account" component={AccountScreen} />
-      </Drawer.Navigator>
-    </NavigationContainer>
-  );
+  if (!loggedIn) {
+    return <AuthStack />;
+  }
+  if (loggedIn) {
+    return <MainNavigator />;
+  }
 }

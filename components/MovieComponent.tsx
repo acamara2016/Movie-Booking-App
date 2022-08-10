@@ -1,10 +1,8 @@
 import React from 'react';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
-import {createStackNavigator} from '@react-navigation/stack';
 import {IMovie} from '../types/movie';
 import {StarIcon} from 'react-native-heroicons/solid';
 import {StarIcon as OutlinedStartIcon} from 'react-native-heroicons/outline';
-import DetailScreen from '../screens/DetailScreen';
 import {useNavigation} from '@react-navigation/native';
 type MovieComponentProps = {
   movie: IMovie;

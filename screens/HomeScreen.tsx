@@ -10,19 +10,11 @@ import {IMovie} from '../types/movie';
 
 const Stack = createStackNavigator();
 
-const HomeScreen = ({navigation}: {navigation: any}) => {
-  const user: IUser = {
-    firstName: 'Adama',
-    lastName: 'Camara',
-    email: 'adama.camara@gmail.com',
-  };
-  const handleGoToDetail = (movie: IMovie) => {
-    navigation.navigate('detail', {movie});
-  };
+const HomeScreen = () => {
   return (
     <View className="w-screen h-screen bg-white border border-gray-300">
       <ScrollView>
-        <Welcome {...user} />
+        <Welcome />
         <LastestMovies />
         <PopularMovies />
       </ScrollView>
@@ -60,7 +52,10 @@ function MyStack() {
       <Stack.Screen
         name="detail"
         component={DetailScreen}
-        options={{headerStyleInterpolator: forFade}}
+        options={{
+          headerShown: false,
+          headerStyleInterpolator: forFade,
+        }}
       />
     </Stack.Navigator>
   );
